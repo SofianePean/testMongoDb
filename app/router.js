@@ -10,7 +10,7 @@ const { addPost, getAllPosts } = require('./controllers/postController')
 
 // Récupérer tous les articles
 router.get('/post', getAllPosts)
-router.get('/', (res, res) => {
+router.get('/', (req, res) => {
     res.send('Bonjour depuis la page home !')
 })
 
