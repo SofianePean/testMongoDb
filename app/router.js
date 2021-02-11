@@ -1,8 +1,6 @@
 const router = require('express').Router();
-const testController = require('./controllers/testController')
 
 // Import des controllers
-const postTest = require('./controllers/testController')
 const { createUser, getOneUser } = require('./controllers/userController')
 const { addPost, getAllPosts } = require('./controllers/postController')
 
@@ -24,7 +22,6 @@ router.post('/user', createUser)
 router.post('/login', getOneUser)
 // Créer un article
 router.post('/post', addPost)
-
 
 
 module.exports = router;

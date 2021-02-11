@@ -1,5 +1,5 @@
 const { response } = require("express");
-const Post = require("../models/Post.model");
+const Post = require("../schemas/Post.model");
 
 const postController = {
   addPost: async (req, res) => {
