@@ -1,5 +1,5 @@
 const { response } = require("express");
-const User = require("../schemas/User.model");
+const { User } = require("../models");
 
 const userController = {
   createUser: async (req, res) => {

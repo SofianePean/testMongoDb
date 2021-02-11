@@ -1,5 +1,4 @@
-const { response } = require("express");
-const Post = require("../schemas/Post.model");
+const { Post } = require("../models");
 
 const postController = {
   addPost: async (req, res) => {
@@ -12,6 +11,7 @@ const postController = {
     }
   },
   getAllPosts: async (req, res) => {
+    console.log('je passe dans le control')
       try {
           const posts = await Post.find();
           res.status(200).json(posts);
