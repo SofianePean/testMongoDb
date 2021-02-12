@@ -3,7 +3,7 @@ const { Category, Post } = require("../models");
 const categoryController = {
   addCategory: async (req, res, next) => {
     try {
-      console.log('req body', req.body)
+      console.log("req body", req.body);
       const category = new Category(req.body);
       const result = await category.save();
       return res.status(200).json({ msg: "Catégorie créée", result });
@@ -24,16 +24,15 @@ const categoryController = {
       next(error);
     }
   },
-  getByCategory: async (req, res, next) => {
-    const tag = req.params.tag
-    console.log(tag)
+  getByCategoryId: async (req, res, next) => {
+    const tagId = req.params.tag;
     try {
-      const posts = await Category.findOne({name : tag}).populate("posts");
+      const posts = await Post.find({ category: tagId }).exec();
       return res.status(200).json(posts);
     } catch (error) {
-      next(error)
+      next(error);
     }
-  }
+  },
 };
 
 module.exports = categoryController;
