@@ -1,11 +1,11 @@
 const { model } = require("mongoose");
 const categorySchema = require("../schemas/category");
 
-class Categoy {
+class Category {
   getTitle() {
     return this.title;
   }
 }
 
-categorySchema.loadClass(Categoy);
-module.exports = model("Categoy", categorySchema);
+categorySchema.loadClass(Category);
+module.exports = model("Category", categorySchema);
