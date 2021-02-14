@@ -4,8 +4,8 @@ const { addCategory, getAllCategories, getByCategoryId } = require("../controlle
 // Ajouter une catégories
 router.post('/category', addCategory);
 // Récupérer toutes les categories
-router.get('/category', getAllCategories)
+router.get('/category', getAllCategories);
 // Récupérer les posts par catégories
-router.get('/category/:tag', getByCategoryId)
+router.get('/category/:tag', getByCategoryId);
 
 module.exports = router;

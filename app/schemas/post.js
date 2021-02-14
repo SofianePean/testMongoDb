@@ -33,6 +33,12 @@ const postSchema = new Schema({
       ref: "Category",
     },
   ],
+  comment: [
+    {
+      type: Schema.Types.ObjectId,
+      ref: "Comment",
+    },
+  ],
 });
 
 module.exports = postSchema;

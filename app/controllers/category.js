@@ -3,7 +3,6 @@ const { Category, Post } = require("../models");
 const categoryController = {
   addCategory: async (req, res, next) => {
     try {
-      console.log("req body", req.body);
       const category = new Category(req.body);
       const result = await category.save();
       return res.status(200).json({ msg: "Catégorie créée", result });

@@ -3,7 +3,7 @@ const bodyParser = require("body-parser");
 const express = require("express");
 const server = express();
 const mongoDB = require("./app/config/database");
-const { userRouter, postRouter, categoryRouter } = require("./app/router");
+const { userRouter, postRouter, categoryRouter, commentRouter } = require("./app/router");
 server.use(express.urlencoded({ extended: true }));
 server.use(bodyParser.json());
 
@@ -11,6 +11,7 @@ server.use(bodyParser.json());
 server.use(userRouter);
 server.use(postRouter);
 server.use(categoryRouter);
+server.use(commentRouter);
 
 mongoDB.on("error", () => console.log("Error connecting to database"));
 mongoDB.once("open", () => console.log("Connected to mongo database"));
