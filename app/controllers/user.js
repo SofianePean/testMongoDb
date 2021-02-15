@@ -45,8 +45,7 @@ const userController = {
   },
   login: async (req, res, next) => {
     try {
-      const mail = req.body.mail;
-      const password = req.body.password;
+      const { mail, password } = req.body;
       if (mail == null || password == null) {
         return res.status(400).json("Il manque l'email ou le password.");
       }
@@ -59,13 +58,26 @@ const userController = {
           user.password,
           function (errByCrypt, resByCrypt) {
             if (resByCrypt) {
-              res.status(200).json("Utilisateur connecté");
+              res.status(200).json({ msg: "Utilisateur connecté", user });
             } else {
               return res.status(403).json("Mot de passe invalide");
             }
           }
         );
       }
+    } catch (error) {
+      next(error);
+    }
+  },
+  deleteAccount: async (req, res, next) => {
+    try {
+      const { userId } = req.params;
+      const user = await User.deleteOne({ _id: userId });
+      console.log(user)
+      if(!user._id) {
+        return res.status(400).json("Pas d'utilisateur")
+      }
+      res.status(200).json("L'utilisateur est supprimé");
     } catch (error) {
       next(error);
     }
