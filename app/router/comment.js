@@ -1,9 +1,15 @@
 const router = require("express").Router();
-const { addComment, findAllComments } = require("../controllers/comment");
+const {
+  addComment,
+  findAllComments,
+  findOneCommentById,
+} = require("../controllers/comment");
 
-// Ajouter une catégories
-router.post('/comment', addComment);
+// Ajouter un commentaire
+router.post("/comment/:id", addComment);
 // Récupérer tous les commentaires
-router.get('/comment', findAllComments)
+router.get("/comment", findAllComments);
+// Récupérer un commentaire par son ID
+router.get("/comment/:commentId", findOneCommentById);
 
 module.exports = router;

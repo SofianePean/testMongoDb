@@ -1,11 +1,16 @@
 const router = require("express").Router();
-const { createUser, getOneUser, getAllUsers } = require("../controllers/user");
+const {
+  createUser,
+  getOneUser,
+  getAllUsers,
+  login,
+} = require("../controllers/user");
 
 // Créer un utilisateur
 router.post("/user", createUser);
-// Trouver un utilisateur pas son email
-router.post("/login", getOneUser);
+// Connexion à un compte
+router.post("/login", login);
 // Récuperer tous les utilisateur
-router.get("/user", getAllUsers)
+router.get("/user", getAllUsers);
 
 module.exports = router;
