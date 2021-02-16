@@ -27,7 +27,7 @@ const commentController = {
       const commentId = req.params.commentId;
       console.log("comment ID", commentId);
       // Je populate User mais je ne garde que son name
-      const comment = await Comment.findById(commentId).populate("user", "name");
+      const comment = await Comment.findById(commentId).populate("user", "username");
       res.status(200).json(comment);
     } catch (error) {
       next(error);

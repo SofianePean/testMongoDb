@@ -33,6 +33,12 @@ const postSchema = new Schema({
       ref: "Category",
     },
   ],
+  author: 
+  {
+    type: Schema.Types.ObjectId,
+    ref: "User",
+    required: true,
+  },
   comment: [
     {
       type: Schema.Types.ObjectId,
