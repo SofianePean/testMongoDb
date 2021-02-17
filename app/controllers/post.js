@@ -46,6 +46,20 @@ const postController = {
       next(error);
     }
   },
+  getLastArticle: async (req, res, next) => {
+    try {
+      const posts = await Post.find()
+        .populate("category")
+        .populate("author", "username");
+      if (posts.length === 0) {
+        return res.status(200).json({ msg: "Il n'y a pas encore d'articles" });
+      }
+      const lastPost = posts[posts.length - 1]
+      res.status(200).json(lastPost);
+    } catch (e) {
+      next(error);
+    }
+  }
 };
 
 module.exports = postController;
