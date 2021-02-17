@@ -1,11 +1,13 @@
 require("dotenv").config();
 const bodyParser = require("body-parser");
 const express = require("express");
+const cors = require('cors');
 const server = express();
 const mongoDB = require("./app/config/database");
 const { userRouter, postRouter, categoryRouter, commentRouter } = require("./app/router");
 server.use(express.urlencoded({ extended: true }));
 server.use(bodyParser.json());
+server.use(cors('*'));
 
 //Router
 server.use(userRouter);
