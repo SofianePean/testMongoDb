@@ -24,7 +24,8 @@ const postController = {
       if (posts.length === 0) {
         return res.status(200).json({ msg: "Il n'y a pas encore d'articles" });
       }
-      res.status(200).json(posts);
+      const newPosts = posts.pop();
+      res.status(200).json(newPosts);
     } catch (e) {
       next(error);
     }
@@ -56,7 +57,7 @@ const postController = {
       }
       const lastPost = posts[posts.length - 1]
       const newPost = posts.pop()
-      res.status(200).json({lastPost, newPost});
+      res.status(200).json(lastPost);
     } catch (e) {
       next(error);
     }
